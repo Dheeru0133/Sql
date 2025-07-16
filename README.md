@@ -70,7 +70,7 @@ DIVIDE([Returned Orders], COUNTROWS(Orders), 0)
 
 Then it will display here:
 
-![Power BI Dashboard](Images/dashboard.png)
+![Power BI Dashboard](https://github.com/Dheeru0133/Sql/blob/main/dashboard.png?raw=true)
 
 ---
 
