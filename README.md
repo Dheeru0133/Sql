@@ -8,9 +8,9 @@ The dataset represents an E-commerce business. I used SQL to explore, clean, and
 
 ## 🛠 Tools & Skills Used
 
-- 🗃️ MySQL – querying, filtering, joins, aggregations
-- 📊 Power BI – data modeling, DAX, dashboard design
-- 📂 CSV Exports – output from SQL used in Power BI
+- 🗃️ MySQL – querying, filtering, joins, aggregations  
+- 📊 Power BI – data modeling, DAX, dashboard design  
+- 📂 CSV Exports – output from SQL used in Power BI  
 - 🧠 Concepts – PK/FK, GROUP BY, CASE, DATE functions, DAX, KPIs
 
 ---
@@ -45,7 +45,7 @@ The dataset represents an E-commerce business. I used SQL to explore, clean, and
 
 ---
 
-## 🧮 Key DAX Measures
+## 🧮 Key DAX Measures (Power BI)
 
 ```DAX
 -- Total Revenue
@@ -66,11 +66,40 @@ DIVIDE([Returned Orders], COUNTROWS(Orders), 0)
 ## 📸 Dashboard Screenshot
 
 > Save your dashboard screenshot as:  
-> 📂 `Images/dashboard.png`  
+> 📂 `Images/dashboard.png`
 
 Then it will display here:
 
-![Power BI Dashboard](https://github.com/Dheeru0133/Sql/blob/main/dashboard.png?raw=true)
+![Power BI Dashboard](Images/dashboard.png)
+
+---
+
+## 🧾 Sample SQL Queries Used
+
+```sql
+-- 1. Total Revenue by Order
+SELECT 
+    od.OrderID,
+    SUM(od.Quantity * p.Price) AS Revenue
+FROM OrderDetails od
+JOIN Products p ON od.ProductID = p.ProductID
+GROUP BY od.OrderID;
+
+-- 2. Return Rate Calculation
+SELECT 
+    COUNT(CASE WHEN IsReturned = 1 THEN 1 END) * 1.0 / COUNT(*) AS ReturnRate
+FROM Orders;
+
+-- 3. Top 10 Products by Revenue
+SELECT 
+    p.ProductName,
+    SUM(od.Quantity * p.Price) AS Revenue
+FROM OrderDetails od
+JOIN Products p ON od.ProductID = p.ProductID
+GROUP BY p.ProductName
+ORDER BY Revenue DESC
+LIMIT 10;
+```
 
 ---
 
@@ -93,6 +122,6 @@ Full pipeline: Query ➜ Clean ➜ Export ➜ Visualize
 
 ## 📝 Notes
 
-- All logic and joins were written in SQL first  
-- Dashboard was built from exported SQL outputs (CSV)  
-- Project reflects real-world analyst flow: from raw data to visual insights
+- SQL was used for all logic, joins, and aggregations  
+- Power BI was used for visual storytelling and insight discovery  
+- This project reflects a real-world analyst workflow from raw data to dashboard
