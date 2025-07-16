@@ -113,7 +113,7 @@ LIMIT 10;
 
 ## 👨‍💻 Built By
 
-**Dheeru**  
+**Sambangi Chaitanya**  
 B.Tech CSE  
 SQL + Power BI Portfolio Project  
 Full pipeline: Query ➜ Clean ➜ Export ➜ Visualize  
