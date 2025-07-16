@@ -1,56 +1,51 @@
 # 🧠 Sales Insights Project — SQL + Power BI
 
-This project showcases a full data analysis pipeline built using **SQL for data querying** and **Power BI for dashboarding**.
+This project showcases a complete data analysis workflow built using **SQL for querying** and **Power BI for visualization**.
 
-The data is based on an E-commerce sales system. First, I used SQL to clean, join, and extract insights from raw tables. Then, I exported those query results to CSVs and built a fully interactive dashboard in Power BI using **data modeling**, **DAX**, and visuals.
+The dataset represents an E-commerce business. I used SQL to explore, clean, and join the data. Then, I exported query results as CSVs and built an interactive Power BI dashboard using relationships, DAX measures, and visuals.
 
 ---
 
 ## 🛠 Tools & Skills Used
 
-- 🗃️ MySQL (data analysis, joins, filtering, aggregations)
-- 📊 Power BI (dashboard design, DAX, slicers, tooltips)
-- 📂 CSV Exports (SQL output imported to Power BI)
-- 📚 Skills: Joins, Group By, CASE, DATE functions, Measures, Data Modeling
+- 🗃️ MySQL – querying, filtering, joins, aggregations
+- 📊 Power BI – data modeling, DAX, dashboard design
+- 📂 CSV Exports – output from SQL used in Power BI
+- 🧠 Concepts – PK/FK, GROUP BY, CASE, DATE functions, DAX, KPIs
 
 ---
 
-## 📁 Data Flow (How I Built It)
+## 📁 Project Flow
 
-1. **Step 1 — SQL Work (in MySQL):**
-   - Queried tables: `Orders`, `OrderDetails`, `Customers`, `Products`, `Regions`
-   - Wrote SQL to calculate:
-     - Revenue per order
-     - Returned orders
-     - Top-selling products
-     - Regional sales
-   - Exported query outputs as **5 CSV files**
+### 🔹 Step 1 – SQL (Data Preparation)
+- Queried tables: `Orders`, `OrderDetails`, `Customers`, `Products`, `Regions`
+- Calculated revenue, returns, top products, regional sales, etc.
+- Exported 5 result tables as CSVs
 
-2. **Step 2 — Power BI Dashboarding:**
-   - Imported CSVs into Power BI
-   - Created relationships (1-to-many) across tables
-   - Built DAX Measures: `Total Revenue`, `Return Rate`, etc.
-   - Designed a multi-visual dashboard
+### 🔹 Step 2 – Power BI (Dashboarding)
+- Imported the CSVs into Power BI
+- Created model with 1-to-many relationships
+- Built DAX measures for key KPIs
+- Designed a clean, insightful dashboard
 
 ---
 
-## 📊 Dashboard Features
+## 📊 Dashboard Elements
 
 ### ✅ KPI Cards:
-- 💰 Total Revenue
-- 📦 Total Orders
-- 🔁 Return Rate
+- 💰 Total Revenue  
+- 📦 Total Orders  
+- 🔁 Return Rate  
 
 ### ✅ Visuals:
-- 📈 Line Chart → Revenue by Year
-- 📊 Bar Chart → Top 10 Products by Revenue
-- 🗺 Column Chart → Revenue by Region
-- 🧺 Column Chart → Revenue by Product Category
-- 🎯 Comparison Chart → Actual vs Target Revenue (110%)
+1. 📈 **Line Chart** – Total Revenue by Order Year  
+2. 📊 **Bar Chart** – Top 10 Products by Revenue  
+3. 🏙 **Column Chart** – Revenue by Region Name  
+4. 🧺 **Column Chart** – Revenue by Product Category  
 
 ---
 
-## 🧮 Key DAX Measures (Power BI Side)
+## 🧮 Key DAX Measures
 
 ```DAX
 -- Total Revenue
@@ -64,34 +59,16 @@ CALCULATE(COUNTROWS(Orders), Orders[IsReturned] = 1)
 -- Return Rate
 Return Rate = 
 DIVIDE([Returned Orders], COUNTROWS(Orders), 0)
-
--- Previous Month Revenue
-Previous Month Revenue = 
-CALCULATE(
-    [Total Revenue],
-    DATESINPERIOD(
-        Orders[OrderDate],
-        EOMONTH(MAX(Orders[OrderDate]), -1),
-        1,
-        MONTH
-    )
-)
-
--- Target Revenue (110% of previous month)
-Target Revenue = 
-[Previous Month Revenue] * 1.1
 ```
 
 ---
 
 ## 📸 Dashboard Screenshot
 
-👉 Add your full dashboard screenshot in the `Images` folder with the name:
-```
-Images/dashboard.png
-```
+> Save your dashboard screenshot as:  
+> 📂 `Images/dashboard.png`  
 
-Then it will appear here automatically:
+Then it will display here:
 
 ![Power BI Dashboard](Images/dashboard.png)
 
@@ -99,9 +76,9 @@ Then it will appear here automatically:
 
 ## 🚀 How to Use
 
-1. Clone/download this repo
-2. Open `SalesDashboard.pbix` in Power BI Desktop
-3. Explore insights using slicers and tooltips
+1. Clone/download this repository  
+2. Open `SalesDashboard.pbix` in Power BI Desktop  
+3. Explore visuals and interact with slicers/tooltips  
 
 ---
 
@@ -109,13 +86,13 @@ Then it will appear here automatically:
 
 **Dheeru**  
 B.Tech CSE  
-SQL + Power BI End-to-End Project  
-Built from scratch using real SQL logic and modern BI tools
+SQL + Power BI Portfolio Project  
+Full pipeline: Query ➜ Clean ➜ Export ➜ Visualize  
 
 ---
 
 ## 📝 Notes
 
-- SQL was used for all core calculations and aggregations
-- Power BI used for modeling, visuals, and DAX enhancements
-- Together this shows strong capability in **data querying and storytelling**
+- All logic and joins were written in SQL first  
+- Dashboard was built from exported SQL outputs (CSV)  
+- Project reflects real-world analyst flow: from raw data to visual insights
